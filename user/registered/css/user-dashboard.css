@@ -1,0 +1,281 @@
+
+/*
+    Black
+    rgb(35 31 32)
+    #231F20
+
+    Gray
+    rgb(155 158 163)
+    #ecf0f1
+
+    Yellow
+    rgb(255 242 0)
+    #fff200
+
+    Beige 
+    rgb(248 235 213)
+    #F8EBD5
+*/
+
+*{
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --black-color: #231F20;
+    --yellow-color: #fff200;
+    --white-color: #ffffff;
+    --beige-color: #f8ebd5;
+    --gray-color: #ecf0f1;
+
+    --expired-color: #e74c3c;
+    --active-color: #2ecc71;
+    --ongoing-color: #f39c12;
+}
+
+::-webkit-scrollbar {
+    width: 8px;  /* Width of the vertical scrollbar */
+    height: 5px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.sidebar {
+    z-index: 2;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--white-color);
+    padding: 0;
+    transition: all 0.3s;
+}
+
+.main-content {
+    background-color: var(--black-color);
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+        overflow-x: hidden;
+        transition: 0.5s;
+        top: 0;
+        left: 0;
+    }
+    .sidebar.active {
+        transform: translateX(0%);
+    }
+    .sidebar .list-group {
+        display: none;
+    }
+    .sidebar.active .list-group {
+        display: block;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+
+
+a{
+    text-decoration: none;
+}
+
+ul li{
+    list-style: none;
+}
+
+a.active{
+    border-radius: 5px;
+    color: white;
+    background-color: var(--black-color);
+    border: 1px solid var(--yellow-color);
+}
+a.active:hover{
+    color: white;
+}
+
+a.inactive{
+    color: var(--black-color);
+    transition: all .5s ease-out;
+    border: 1px solid var(--white-color);
+}
+
+a.inactive:hover{
+    color: var(--black-color);
+    border-radius: 5px;
+    background-color: var(--gray-color);
+    border: 1px solid var(--black-color);
+    transition: all .5s ease-out;
+}
+
+
+div input::placeholder {
+    color: var(--white-color);
+    opacity: 1;  /* Ensures the placeholder color is fully opaque */
+}
+
+div input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--white-color);
+}
+
+
+
+.home-loader{
+    position: fixed;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .1s ease-in-out, opacity .5s ease-in-out;
+}
+
+.home-loader.active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    z-index: 2;
+    transform: scale(1);
+    opacity: 1;
+    transition: transform .1s ease-in-out, opacity .5s ease-in-out;
+}
+
+.home-content{
+    display: none;
+}
+
+.home-content.active{
+    display: flex;
+}
+
+
+
+
+
+
+.card {
+    background-color: var(--white-color);
+    border: none;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+    transition: all .5s linear;
+}
+
+.card-yellow {
+    background-color: var(--yellow-color);
+    color: #000;
+}
+
+.card-beige {
+    background-color: var(--beige-color);
+}
+
+.card-gray { 
+    background-color: var(--gray-color);
+}
+
+.card-body ul li a{
+    color: var(--black-color);
+    transform: scale(1);
+    transition: all .5s ease-out;
+}
+
+.card-body ul li a:hover{
+    text-decoration: underline;
+    color: blue;
+    transition: all .5s ease-out;
+}
+
+
+.tip-card {
+    transition: opacity 0.5s ease-in-out;
+}
+.tip-card.fade-out {
+    opacity: 0;
+}
+
+
+
+
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }

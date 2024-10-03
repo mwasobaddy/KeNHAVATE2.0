@@ -1,0 +1,58 @@
+Options -Indexes
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /KeNHAVATE/
+
+
+<FilesMatch "sse\.php$">
+    Header set Cache-Control "no-cache"
+    Header set Content-Type "text/event-stream"
+    Header set Connection "keep-alive"
+</FilesMatch>
+
+# Redirect to index.php for base URL
+RewriteRule ^$ index.php [L]
+
+# Redirect specific URLs with query parameters
+RewriteRule ^user-guest$ user/guest/home-guest.php [NC,L,QSA]
+RewriteRule ^auth/user-signin$ user/guest/auth/signin.php [NC,L,QSA]
+RewriteRule ^auth/user-signup$ user/guest/auth/signup.php [NC,L,QSA]
+
+
+
+# Other URL redirects
+RewriteRule ^server-sent-events(.*)$ libraries/functions/sse.php [NC,L]
+RewriteRule ^fetch-data(.*)$  libraries/functions/DBFetchInfo.php [NC,L]
+RewriteRule ^post-data(.*)$  libraries/functions/DBPostInfo.php [NC,L]
+
+RewriteRule ^user-suspended(.*)$ user/guest/resources/other-pages/suspend.php [NC,L]
+RewriteRule ^user-banned(.*)$ user/guest/resources/other-pages/ban.php [NC,L]
+RewriteRule ^on-going-maintenance(.*)$ user/guest/resources/other-pages/maintenance.php [NC,L]
+RewriteRule ^innovation-areas(.*)$ user/guest/resources/other-pages/innovation-areas.php [NC,L]
+RewriteRule ^innovation-challenges(.*)$ user/guest/resources/other-pages/innovation-challenges.php [NC,L]
+RewriteRule ^who-we-are(.*)$ user/guest/resources/other-pages/who-we-are.php [NC,L]
+RewriteRule ^chat-us(.*)$ user/guest/resources/other-pages/chat-us.php [NC,L]
+RewriteRule ^faq(.*)$ user/guest/resources/other-pages/FAQ.php [NC,L]
+RewriteRule ^terms-and-conditions(.*)$ user/guest/resources/other-pages/terms-and-conditions.php [NC,L]
+RewriteRule ^privacy-policy(.*)$ user/guest/resources/other-pages/privacy-policy.php [NC,L]
+
+
+RewriteRule ^user-dashboard(.*)$ user/registered/user-dashboard.php [NC,L]
+
+RewriteRule ^image-library-KeNHA/(.*)$ img/$1 [NC,L]
+
+RewriteRule ^chat-bot(.*)$ templates/chatbot.html [NC,L]
+
+
+# Serve static files directly (skip rewriting)
+RewriteRule \.(css|js|jpg|jpeg|png|gif|webp)$ - [L]
+
+# Redirect directory access to index.php
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$ index.php [L]
+
+# Rewrite non-existing URLs to index.php (exclude .php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteRule ^(.*)$ 404.php [L]

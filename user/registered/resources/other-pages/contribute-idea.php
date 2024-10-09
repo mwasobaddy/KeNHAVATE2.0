@@ -1,7 +1,7 @@
 <?php
     
-    include '../../libraries/functions/IncludeAll.php';
-    include '../../libraries/functions/DBFetchInfo.php';
+    include '../../../../libraries/functions/IncludeAll.php';
+    include '../../../../libraries/functions/DBFetchInfo.php';
 
     //confirm session is set
 ?>
@@ -155,7 +155,7 @@
                                 autoplay>
                             </lottie-player>
                         </button>
-                        <h4 class="mb-0">Dashboard</h4>
+                        <h4 class="mb-0">Contribute Idea</h4>
                         <i class="bi bi-bell"></i>
                     </div>
                 </nav>
@@ -402,7 +402,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Custom js -->
-    <script src="user/registered/js/user-dashboard.js"></script>
+    <script src="user/registered/js/contribute-idea.js"></script>
     
 </body>
 </html>

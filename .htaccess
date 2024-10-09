@@ -38,6 +38,13 @@ RewriteRule ^privacy-policy(.*)$ user/guest/resources/other-pages/privacy-policy
 
 
 RewriteRule ^user-dashboard(.*)$ user/registered/user-dashboard.php [NC,L]
+RewriteRule ^contribute-idea(.*)$ user/registered/resources/other-pages/contribute-idea.php [NC,L]
+RewriteRule ^your-ideas(.*)$ user/registered/resources/other-pages/your-ideas.php [NC,L]
+RewriteRule ^request-collaborations(.*)$ user/registered/resources/other-pages/request-collaborations.php [NC,L]
+RewriteRule ^collaborations-inbox(.*)$ user/registered/resources/other-pages/collaborations-inbox.php [NC,L]
+RewriteRule ^challenge-arena(.*)$ user/registered/resources/other-pages/challenge-arena.php [NC,L]
+RewriteRule ^challenge-collection(.*)$ user/registered/resources/other-pages/challenge-collection.php [NC,L]
+RewriteRule ^leadership-board(.*)$ user/registered/resources/other-pages/leadership-board.php [NC,L]
 
 RewriteRule ^image-library-KeNHA/(.*)$ img/$1 [NC,L]
 

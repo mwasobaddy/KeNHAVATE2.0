@@ -207,6 +207,7 @@
 
                             <div class="section-B">
                                 <h3 class="mb-3" style="text-decoration: underline;">Section B</h3>
+                                <h6 class="text-danger"><i>* Idea Details</i></h6>
                                 <!-- Yes/No Question -->
                                 <div class="form-group d-flex flex-column mb-5">
                                     <label for="collaborationIdea">Do you want to avail your idea for collaboration with other users?</label>

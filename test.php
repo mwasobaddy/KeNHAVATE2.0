@@ -1,138 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <title>Swiper demo</title>
-  <meta name="viewport" content="width=device-width, init1ial-scale=1, minimum-scale=1, maximum-scale=1" />
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <!-- Demo styles -->
-  <style>
-    html,
-    body {
-      position: relative;
-      height: 100%;
-    }
-
-    body {
-      background: #eee;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
-
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .autoplay-progress {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      z-index: 10;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: var(--swiper-theme-color);
-    }
-
-    .autoplay-progress svg {
-      --progress: 0;
-      position: absolute;
-      left: 0;
-      top: 0px;
-      z-index: 10;
-      width: 100%;
-      height: 100%;
-      stroke-width: 4px;
-      stroke: var(--swiper-theme-color);
-      fill: none;
-      stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
-      stroke-dasharray: 125.6;
-      transform: rotate(-90deg);
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Swiper -->
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-    <div class="autoplay-progress">
-      <svg viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="20"></circle>
-      </svg>
-      <span></span>
-    </div>
-  </div>
-
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    const progressCircle = document.querySelector(".autoplay-progress svg");
-    const progressContent = document.querySelector(".autoplay-progress span");
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 10000,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      on: {
-        autoplayTimeLeft(s, time, progress) {
-          progressCircle.style.setProperty("--progress", 1 - progress);
-          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaboration Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #teamMembersInputs {
+            display: none; /* Hide team member inputs initially */
         }
-      }
-    });
-  </script>
-</body>
+    </style>
+</head>
+<body>
 
+<div class="container mt-5">
+    <h2>Collaboration Form</h2>
+    <form id="collaborationForm">
+        <!-- Yes/No Question -->
+        <div class="form-group">
+            <label>Do you want to avail your idea for other users to collaborate with you?</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="collaboration" id="collabYes" value="yes" required>
+                <label class="form-check-label" for="collabYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="collaboration" id="collabNo" value="no">
+                <label class="form-check-label" for="collabNo">No</label>
+            </div>
+        </div>
+
+        <!-- Individual or Team -->
+        <div class="form-group">
+            <label>Is this work individual or a team?</label>
+            <select class="form-control" id="workType" required>
+                <option value="">Select...</option>
+                <option value="individual">Individual</option>
+                <option value="team">Team</option>
+            </select>
+        </div>
+
+        <!-- Team Members Input -->
+        <div class="form-group" id="teamMembersDropdown" style="display: none;">
+            <label>Number of team members:</label>
+            <select class="form-control" id="numberOfMembers">
+                <option value="">Select...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="teamMembersInputs"></div>
+
+        <!-- Kenha Staff Question -->
+        <div class="form-group">
+            <label>Are you a Kenha staff?</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="kenhaStaff" id="kenhaYes" value="yes" required>
+                <label class="form-check-label" for="kenhaYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="kenhaStaff" id="kenhaNo" value="no">
+                <label class="form-check-label" for="kenhaNo">No</label>
+            </div>
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group" id="workEmailGroup">
+            <label for="workEmail">Work Email:</label>
+            <input type="email" class="form-control" id="workEmail" required>
+        </div>
+        
+        <div class="form-group" id="personalEmailGroup" style="display: none;">
+            <label for="personalEmail">Personal Email:</label>
+            <input type="email" class="form-control" id="personalEmail">
+        </div>
+
+        <!-- Designation Dropdown -->
+        <div class="form-group">
+            <label for="designation">Designation:</label>
+            <select class="form-control" id="designation" required>
+                <option value="">Select...</option>
+                <option value="manager">Manager</option>
+                <option value="engineer">Engineer</option>
+                <option value="analyst">Analyst</option>
+                <option value="staff">Staff</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Show team member dropdown based on work type
+        $('#workType').change(function() {
+            if ($(this).val() === 'team') {
+                $('#teamMembersDropdown').show();
+            } else {
+                $('#teamMembersDropdown').hide();
+                $('#teamMembersInputs').empty().hide(); // Clear team member inputs
+            }
+        });
+
+        // Show inputs for number of team members
+        $('#numberOfMembers').change(function() {
+            const numberOfMembers = parseInt($(this).val());
+            $('#teamMembersInputs').empty(); // Clear previous inputs
+            if (numberOfMembers) {
+                for (let i = 1; i <= numberOfMembers; i++) {
+                    $('#teamMembersInputs').append(`
+                        <div class="form-group">
+                            <label for="member${i}">Team Member ${i} Name:</label>
+                            <input type="text" class="form-control" id="member${i}" required>
+                        </div>
+                    `);
+                }
+                $('#teamMembersInputs').show(); // Show team member inputs
+            } else {
+                $('#teamMembersInputs').hide(); // Hide if no valid selection
+            }
+        });
+
+        // Show/Hide personal email based on Kenha staff
+        $('input[name="kenhaStaff"]').change(function() {
+            if ($('#kenhaNo').is(':checked')) {
+                $('#workEmailGroup').hide();
+                $('#personalEmailGroup').show();
+            } else {
+                $('#workEmailGroup').show();
+                $('#personalEmailGroup').hide();
+            }
+        });
+    });
+</script>
+
+</body>
 </html>

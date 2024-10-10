@@ -9,6 +9,11 @@
         ["title" => "Challenge Arena", "url" => "services.php"],
         ["title" => "Submit Challenge", "url" => "services.php"],
         ["title" => "Challenge Gallery", "url" => "services.php"],
+        ["title" => "Leadershipboard", "url" => "services.php"],
+
+        ["title" => "Terms & Conditions", "url" => "services.php"],
+        ["title" => "Guidelines", "url" => "services.php"],
+        ["title" => "Leadershipboard", "url" => "services.php"]
         ["title" => "Leadershipboard", "url" => "services.php"]
     ];
     $userGuestPages = [

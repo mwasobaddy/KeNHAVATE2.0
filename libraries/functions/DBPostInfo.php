@@ -120,4 +120,27 @@
             exit;
         }
     }
+    
+    // Include the pages list
+    include 'pages.php';
+
+    // Check if the request method is POST
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Sanitize the input
+        $query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_STRING);
+
+        // Search for matching pages
+        foreach ($pages as $page) {
+            if (stripos($page['title'], $query) !== false) {
+                // Return the URL of the first matched page
+                echo $page['url'];
+                exit; // Exit after finding the first match
+            }
+        }
+
+        // If no match found, return an empty string
+        echo "";
+    } else {
+        echo "Invalid request.";
+    }
 ?>

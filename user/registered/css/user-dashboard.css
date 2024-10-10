@@ -153,7 +153,7 @@ div input{
     position: fixed;
     transform: scale(0);
     opacity: 0;
-    transition: transform .1s ease-in-out, opacity .5s ease-in-out;
+    transition: transform .1s ease-in-out, opacity .1s ease-in-out;
 }
 
 .home-loader.active{
@@ -223,61 +223,6 @@ div input{
 }
 
 
-
-
-
-
-.swiper {
-    width: 100%;
-    height: 100%;
-    background-color: var(--white-color);
-}
-
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.autoplay-progress {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    z-index: 10;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--swiper-theme-color);
-}
-
-.autoplay-progress svg {
-    --progress: 0;
-    position: absolute;
-    left: 0;
-    top: 0px;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    stroke-width: 4px;
-    stroke: var(--swiper-theme-color);
-    fill: none;
-    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
-    stroke-dasharray: 125.6;
-    transform: rotate(-90deg);
-}
 
 .truncate-6{
     display: -webkit-box;

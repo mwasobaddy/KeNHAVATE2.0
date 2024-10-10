@@ -1,11 +1,11 @@
 // Elements used for handling loader and content visibility
-const homeLoader = document.querySelector('.home-loader');
-const homeContent = document.querySelector('.home-content');
+const contributeIdeaLoader = document.querySelector('.contribute-idea-loader');
+const contributeIdeaContent = document.querySelector('.contribute-idea-content');
 
 if (document.readyState === 'loading') {
     // Document is still loading
-    if (homeLoader) homeLoader.classList.add('active');
-    if (homeContent) homeContent.classList.remove('active');
+    if (contributeIdeaLoader) contributeIdeaLoader.classList.add('active');
+    if (contributeIdeaContent) contributeIdeaContent.classList.remove('active');
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Document is already loaded, so execute the function after a 5-second delay
     setTimeout(() => {
-        if (homeLoader) homeLoader.classList.remove('active');
-        if (homeContent) homeContent.classList.add('active');
+        if (contributeIdeaLoader) contributeIdeaLoader.classList.remove('active');
+        if (contributeIdeaContent) contributeIdeaContent.classList.add('active');
     }, 5000); // 5000 milliseconds = 5 seconds
     
 
@@ -121,128 +121,65 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //show submissions tips
-    const tips = [
-        {
-            title: "Be Specific",
-            content: "Clearly define the problem your idea solves and how it addresses it. The more specific you are, the easier it is for others to understand, evaluate, and engage with your proposal. Include details about the context, target audience, and specific outcomes to paint a clearer picture."
-        },
-        {
-            title: "Consider Feasibility",
-            content: "Think about how your idea could be implemented in a practical setting. Assess potential challenges and barriers that might arise, and consider strategies to overcome them. Demonstrating awareness of logistical, technical, or financial constraints shows that you've thoroughly thought through your idea and increases its credibility."
-        },
-        {
-            title: "Highlight the Impact",
-            content: "Explain the potential benefits of your idea in detail. How will it improve existing processes, save time or resources, or create value for users? Use concrete examples and quantify the impact when possible, such as estimated cost savings, efficiency improvements, or increased satisfaction among stakeholders."
-        },
-        {
-            title: "Use Clear Language",
-            content: "Avoid jargon and overly technical terms that may alienate your audience. Aim to present your idea in a straightforward manner that is accessible to everyone, regardless of their background or expertise. Using simple, relatable language helps ensure your idea resonates with a broader audience."
-        },
-        {
-            title: "Embrace Feedback",
-            content: "Be open to constructive criticism and actively seek input from others. Use feedback to refine and enhance your ideas. Engaging with colleagues and stakeholders not only strengthens your proposal but can also lead to new insights and innovative solutions that you may not have considered initially."
+    // Show team member dropdown based on work type
+    $('#workType').change(function() {
+        if ($(this).val() === 'team') {
+            $('#teamMembersDropdown').show();
+        } else {
+            $('#teamMembersDropdown').hide();
+            $('#teamMembersInputs').empty().hide(); // Clear team member inputs
         }
-    ];
-    
-
-    let currentTipIndex = 0;
-
-    function updateTip() {
-        const tipCard = document.getElementById('tipCard');
-        tipCard.classList.add('fade-out');
-
-        setTimeout(() => {
-            const tipTitle = document.getElementById('tipTitle');
-            const tipContent = document.getElementById('tipContent');
-
-            currentTipIndex = (currentTipIndex + 1) % tips.length;
-            tipTitle.textContent = tips[currentTipIndex].title;
-            tipContent.textContent = tips[currentTipIndex].content;
-
-            tipCard.classList.remove('fade-out');
-        }, 500);
-    }
-
-    // Initial tip display
-    updateTip();
-
-    // Rotate tips every 10 seconds
-    setInterval(updateTip, 10000);
-    
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // pagination swiper.js
-    const progressCircle = document.querySelector(".autoplay-progress svg");
-    const progressContent = document.querySelector(".autoplay-progress span");
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 10000,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      on: {
-        autoplayTimeLeft(s, time, progress) {
-          progressCircle.style.setProperty("--progress", 1 - progress);
-          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-        }
-      }
     });
-    
+
+    // Show inputs for number of team members
+    $('#teamMembersInputsHeader').hide(); // Hide if no valid selection
+    $('#numberOfMembers').change(function() {
+        const numberOfMembers = parseInt($(this).val());
+        $('#teamMembersInputs').empty(); // Clear previous inputs
+        if (numberOfMembers) {
+            for (let i = 1; i <= numberOfMembers; i++) {
+                $('#teamMembersInputs').append(`
+                    <div class="form-group mb-3">
+                        <label for="member${i}">Team Member ${i} Email:</label>
+                        <input type="email" class="form-control" id="member${i}" required>
+                    </div>
+                `);
+            }
+            $('#teamMembersInputs').show(); // Show team member inputs
+            $('#teamMembersInputsHeader').show(); // Hide if no valid selection
+        } else {
+            $('#teamMembersInputs').hide(); // Hide if no valid selection
+            $('#teamMembersInputsHeader').hide(); // Hide if no valid selection
+        }
+    });
+
+    // Show/Hide personal email based on Kenha staff
+    $('input[name="kenhaStaff"]').change(function() {
+        if ($('#kenhaNo').is(':checked')) {
+            $('#workEmailGroup').hide();
+            $('#personalEmailGroup').show();
+        } else {
+            $('#workEmailGroup').show();
+            $('#personalEmailGroup').hide();
+        }
+    });
     
 });

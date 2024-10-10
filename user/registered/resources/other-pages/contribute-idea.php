@@ -207,113 +207,108 @@
 
                             <div class="section-B">
                                 <h3 class="mb-3" style="text-decoration: underline;">Section B</h3>
-                                <h6 class="text-danger"><i>* Idea Details</i></h6>
-                                <!-- Yes/No Question -->
-                                <div class="form-group d-flex flex-column mb-5">
-                                    <label for="collaborationIdea">Do you want to avail your idea for collaboration with other users?</label>
-                                    <small class="form-text text-muted mb-2">Select "Yes" to allow others to collaborate with you on your idea and "No" to keep your idea to your self.</small>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="collaboration" id="collabYes" value="yes" required>
-                                        <label class="form-check-label" for="collabYes">Yes</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="collaboration" id="collabNo" value="no">
-                                        <label class="form-check-label" for="collabNo">No</label>
-                                    </div>
-                                </div>
+                                <h6 class="text-danger mb-5"><i>* Fill In The Required Details In Abstract Form Below *</i></h6>
 
-                                <!-- Individual or Team -->
-                                <div class="form-group mb-5">
-                                    <label class="mb-2">Is this work individual or a team?</label>
-                                    <select class="form-control" id="workType" required>
-                                        <option value="">Select...</option>
-                                        <option value="individual">Individual</option>
-                                        <option value="team">Team</option>
-                                    </select>
-                                </div>
-
-                                <!-- Team Members Input -->
-                                <div class="form-group mb-5" id="teamMembersDropdown" style="display: none;">
-                                    <label>Number of team members:</label>
-                                    <select class="form-control" id="numberOfMembers">
-                                        <option value="">Select...</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
+                                    <div class="row row-1">
                                 
-                                <div>
-                                    <h6 class="fw-bolder text-danger" id="teamMembersInputsHeader">List the Email Addresses of All Team Members Stated Above:</h6>
-                                    <div class="form-group mb-5" id="teamMembersInputs"></div>
-                                </div>
+                                        <div class="form-group col-lg-6 mb-5" id="ideaTitleGroup">
+                                            <label class="mb-2" for="ideaTitle">1. State Your Idea Title:</label>
+                                            <input type="text" class="form-control mb-2" id="ideaTitle" oninput="updateCharacterCount('ideaTitle', 30, 'countIdeaTitle30')">
+                                            <span class="text-danger">(Characters Remaining: <span id="countIdeaTitle30">30</span>)</span>
+                                        </div>
 
-                                <!-- Kenha Staff Question -->
-                                <div class="form-group mb-3">
-                                    <label>Are you a Kenha staff?</label><br>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="kenhaStaff" id="kenhaYes" value="yes" required>
-                                        <label class="form-check-label" for="kenhaYes">Yes</label>
+                                        <div class="form-group col-lg-6 mb-5" id="innovationAreasGroup">
+                                            <label class="mb-2" for="innovationAreas">2: Select Your Innovation Areas:</label>
+                                            <select class="form-control mb-2" id="innovationAreas" name="innovationAreas">
+                                                <option value="" disabled="" selected="">Select an option</option>
+                                                <option value="Customer Delivery Service">CUSTOMER DELIVERY SERVICE</option>
+                                                <option value="Quality and Safety">QUALITY AND SAFETY</option>
+                                                <option value="Road Construction Materials">ROAD CONSTRUCTION MATERIALS</option>
+                                                <option value="Road Construction Technologies">ROAD CONSTRUCTION TECHNOLOGIES</option>
+                                                <option value="Climate Resilience">CLIMATE RESILIENCE</option>
+                                                <option value="Value for Money">VALUE FOR MONEY</option>
+                                                <option value="Revenue Generation">REVENUE GENERATION</option>
+                                                <option value="Other">OTHER</option>
+                                            </select>
+                                            <span class="text-danger">Choose an Area Where Idea is Applicable</span>
+                                        </div>
+
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="kenhaStaff" id="kenhaNo" value="no">
-                                        <label class="form-check-label" for="kenhaNo">No</label>
+
+                                    <div class="row row-2">
+                                        
+                                        <div class="form-group col-lg-6 mb-5" id="ideaDescriptionGroup">
+                                            <label class="mb-2" for="ideaDescription">3. Briefly Describe Your Idea:</label>
+                                            <textarea class="form-control mb-2" id="ideaDescription" rows="4" oninput="updateCharacterCount('ideaDescription', 200, 'countIdeaDescription200')"></textarea>
+                                            <span class="text-danger">(Characters Remaining: <span id="countIdeaDescription200">200</span>)</span>
+                                        </div>
+                                        
+                                        <div class="form-group col-lg-6 mb-5" id="ideaProblemStatementGroup">
+                                            <label class="mb-2" for="ideaProblemStatement">4. Describe the Problem Statement for Your Idea:</label>
+                                            <textarea class="form-control mb-2" id="ideaProblemStatement" rows="4" oninput="updateCharacterCount('ideaProblemStatement', 200, 'countIdeaProblemStatement200')"></textarea>
+                                            <span class="text-danger">(Characters Remaining: <span id="countIdeaProblemStatement200">200</span>)</span>
+                                        </div>
+
                                     </div>
-                                </div>
+                                    
+                                    <div class="row row-3">
+                                        
+                                        <div class="form-group col-lg-6 mb-5" id="ideaProposedSolutionGroup">
+                                            <label class="mb-2" for="ideaProposedSolution">5. Outline Your Proposed Solution:</label>
+                                            <textarea class="form-control mb-2" id="ideaProposedSolution" rows="4" oninput="updateCharacterCount('ideaProposedSolution', 300, 'countIdeaProposedSolution300')"></textarea>
+                                            <span class="text-danger">(Characters Remaining: <span id="countIdeaProposedSolution300">300</span>)</span>
+                                        </div>
+                                        
+                                        <div class="form-group col-lg-6 mb-5" id="ideaBenefitAnalysisGroup">
+                                            <label class="mb-2" for="ideaBenefitAnalysis">6. Provide Your Benefit Analysis:</label>
+                                            <textarea class="form-control mb-2" id="ideaBenefitAnalysis" rows="4" oninput="updateCharacterCount('ideaBenefitAnalysis', 300, 'countIdeaBenefitAnalysis300')"></textarea>
+                                            <span class="text-danger">(Characters Remaining: <span id="countIdeaBenefitAnalysis300">300</span>)</span>
+                                        </div>
 
-                                <!-- Email Input -->
-                                <div class="form-group mb-5" id="workEmailGroup">
-                                    <label for="workEmail">Work Email:</label>
-                                    <input type="email" class="form-control" id="workEmail" required>
-                                </div>
-                                
-                                <div class="form-group mb-5" id="personalEmailGroup" style="display: none;">
-                                    <label for="personalEmail">Personal Email:</label>
-                                    <input type="email" class="form-control" id="personalEmail">
-                                </div>
+                                    </div>
 
-                                <!-- Designation Dropdown -->
-                                <div class="form-group mb-5">
-                                    <label for="designation">Designation:</label>
-                                    <select class="form-control" id="designation" required>
-                                        <option value="">Select...</option>
-                                        <option value="manager">Manager</option>
-                                        <option value="engineer">Engineer</option>
-                                        <option value="analyst">Analyst</option>
-                                        <option value="staff">Staff</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
+                                    <div class="row row-4">
 
-                                <div class="d-flex justify-content-between mb-1">
-                                    <button type="button" class="btn btn-send d-flex flex-row align-items-center" style="gap: 10px; width: fit-content;">
-                                        <lottie-player
-                                            src="image-library-KeNHA/lottieflow-arrow-06-01-000000-easey.json" 
-                                            background="transparent" 
-                                            speed="1" 
-                                            style="width: 30px; height: 30px;" 
-                                            loop 
-                                            autoplay>
-                                        </lottie-player> Back to Section 2
-                                    </button>
-                                    <button type="Submit" class="btn btn-send d-flex flex-row align-items-center" style="gap: 10px; width: fit-content;">
-                                        Submit 
-                                        <lottie-player
-                                            src="image-library-KeNHA/lottieflow-social-networks-15-9-000000-easey.json" 
-                                            background="transparent" 
-                                            speed="1" 
-                                            style="width: 30px; height: 30px;" 
-                                            loop 
-                                            autoplay>
-                                        </lottie-player>
-                                    </button>
+                                        <div class="form-group col-lg-6 mb-5" id="ideaProposalPDFGroup">
+                                            <label class="mb-2" for="ideaProposalPDF">7. Upload Your Full Proposal (PDF only):</label>
+                                            <input type="file" class="form-control mb-2" id="ideaProposalPDF" accept=".pdf" required>
+                                            <small class="text-danger"><strong>(PDF Maximum Size is 20MB)</strong></small>
+                                        </div>
+
+                                        <div class="form-group col-lg-6 d-flex flex-column mb-5" id="ideaCheckGroup">
+                                            <label class="mb-2" for="ideaCheck">8. Check to Affirm That This Idea is Entirely Your Own & Has Not Been Plagiarized:</label>
+                                            <div>                                                    
+                                                <input class="form-check-input" type="radio" name="ideaCheck" id="ideaCheck">
+                                                <small class="">I certify that this idea is uniquely mine and has not been taken from others.</small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <button type="button" class="btn btn-send d-flex flex-row align-items-center" style="gap: 10px; width: fit-content;">
+                                            <lottie-player
+                                                src="image-library-KeNHA/lottieflow-arrow-06-01-000000-easey.json" 
+                                                background="transparent" 
+                                                speed="1" 
+                                                style="width: 30px; height: 30px;" 
+                                                loop 
+                                                autoplay>
+                                            </lottie-player> Back to Section 2
+                                        </button>
+                                        <button type="Submit" class="btn btn-send d-flex flex-row align-items-center" style="gap: 10px; width: fit-content;">
+                                            Submit 
+                                            <lottie-player
+                                                src="image-library-KeNHA/lottieflow-social-networks-15-9-000000-easey.json" 
+                                                background="transparent" 
+                                                speed="1" 
+                                                style="width: 30px; height: 30px;" 
+                                                loop 
+                                                autoplay>
+                                            </lottie-player>
+                                        </button>
+                                    </div>
+
                                 </div>
                             </div>
                         </form>

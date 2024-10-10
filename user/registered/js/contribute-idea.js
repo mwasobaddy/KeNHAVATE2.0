@@ -181,5 +181,53 @@ document.addEventListener("DOMContentLoaded", function() {
             $('#personalEmailGroup').hide();
         }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function updateCharacterCount(inputId, maxCount, countId) {
+        const inputField = document.getElementById(inputId);
+        const characterCountSpan = document.getElementById(countId);
+        
+        // Get the value of the input
+        const text = inputField.value;
+        
+        // Count characters excluding spaces
+        const characterCount = text.replace(/\s/g, '').length;
+        const remainingCharacters = maxCount - characterCount;
+        
+        // Update the count display
+        characterCountSpan.textContent = Math.max(remainingCharacters, 0);
+        
+        // If we've exceeded the limit, trim the input
+        if (remainingCharacters < 0) {
+            let trimmedText = '';
+            let count = 0;
+            for (let char of text) {
+                if (!/\s/.test(char)) {
+                    if (count >= maxCount) break;
+                    count++;
+                }
+                trimmedText += char;
+            }
+            inputField.value = trimmedText;
+        }
+    }
+    // Expose the function to the global scope
+    window.updateCharacterCount = updateCharacterCount;
     
 });
